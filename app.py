@@ -7,34 +7,36 @@ app = Flask(__name__)
 # =========================
 
 classmates = [
-    {
-        "name": "Adamah",
-        "boy": True,
-        "glasses": False,
-        "football": False,
-        "quiet": False
-    },
-    {
-        "name": "Izzat",
-        "boy": True,
-        "glasses": True,
-        "football": False,
-        "quiet": False
-    },
-    {
-        "name": "Arissa",
-        "boy": False,
-        "glasses": False,
-        "football": False,
-        "quiet": False
-    },
-    {
-        "name": "Kamil",
-        "boy": True,
-        "glasses": False,
-        "football": False,
-        "quiet": False
-    }
+    {"name": "Adamah", "boy": True, "glasses": False, "football": True, "quiet": False},
+    {"name": "Saif", "boy": True, "glasses": True, "football": False, "quiet": True},
+    {"name": "Yusuf", "boy": True, "glasses": False, "football": False, "quiet": True},
+    {"name": "Izzat", "boy": True, "glasses": True, "football": False, "quiet": False},
+    {"name": "Ar Rayyan", "boy": True, "glasses": True, "football": True, "quiet": False},
+    {"name": "Sarvyss", "boy": True, "glasses": True, "football": False, "quiet": False},
+    {"name": "Shaffy", "boy": True, "glasses": False, "football": True, "quiet": False},
+    {"name": "Ahmad Rayyan", "boy": True, "glasses": False, "football": True, "quiet": False},
+    {"name": "Manan", "boy": True, "glasses": False, "football": False, "quiet": False},
+    {"name": "Ashraf", "boy": True, "glasses": True, "football": False, "quiet": True},
+    {"name": "Arissa S", "boy": False, "glasses": False, "football": False, "quiet": False},
+    {"name": "Arissa Z", "boy": False, "glasses": False, "football": False, "quiet": True},
+    {"name": "Adelia", "boy": False, "glasses": False, "football": False, "quiet": False},
+    {"name": "Wan Hana", "boy": False, "glasses": False, "football": False, "quiet": True},
+    {"name": "Hannah", "boy": False, "glasses": True, "football": False, "quiet": False},
+    {"name": "Zulaikha", "boy": False, "glasses": False, "football": False, "quiet": False},
+    {"name": "Qaisara", "boy": False, "glasses": True, "football": False, "quiet": False},
+    {"name": "Orked", "boy": False, "glasses": False, "football": False, "quiet": False},
+    {"name": "Attiyah", "boy": False, "glasses": False, "football": False, "quiet": True},
+    {"name": "Najihah", "boy": False, "glasses": True, "football": False, "quiet": True},
+    {"name": "Fatehah", "boy": False, "glasses": True, "football": False, "quiet": True},
+    {"name": "Iris", "boy": False, "glasses": True, "football": False, "quiet": False},
+    {"name": "Irdina", "boy": False, "glasses": True, "football": False, "quiet": False},
+    {"name": "Qistina", "boy": False, "glasses": True, "football": False, "quiet": False},
+    {"name": "Qaireen", "boy": False, "glasses": False, "football": False, "quiet": False},
+    {"name": "Liza", "boy": False, "glasses": True, "football": False, "quiet": False},
+    {"name": "Aina", "boy": False, "glasses": False, "football": False, "quiet": False},
+    {"name": "Fitri", "boy": True, "glasses": False, "football": False, "quiet": False},
+    {"name": "Aishah ", "boy": False, "glasses": False, "football": False, "quiet": False},
+    {"name": "Kamil", "boy": True, "glasses": False, "football": True, "quiet": False}
 ]
 
 
