@@ -2,795 +2,258 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+# =========================================================
+# CLASSMATES
+# =========================================================
 
 classmates = [
-    {"name": "Adamah", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
-    {"name": "Saif", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Yusuf", "boy": True, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
-    {"name": "Izzat", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": False, "coding": False, "ml": True, "kpop": False, "technology": False},
-    {"name": "Ar Rayyan", "boy": True, "glasses": True, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": True},
-    {"name": "Sarvyss", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
-    {"name": "Shaffy", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": True, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
-    {"name": "Ahmad Rayyan", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
-    {"name": "Manan", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": False, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Ashraf", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": False, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": True},
+{"name":"Adamah","boy":1,"glasses":0,"football":1,"quiet":0,"like_math":0,"chess":1,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":1,"ml":0,"kpop":0,"technology":1},
+{"name":"Saif","boy":1,"glasses":1,"football":0,"quiet":1,"like_math":0,"chess":0,"artist":1,"talktive":0,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Yusuf","boy":1,"glasses":0,"football":0,"quiet":1,"like_math":1,"chess":1,"artist":0,"talktive":0,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":1,"ml":0,"kpop":0,"technology":1},
+{"name":"Izzat","boy":1,"glasses":1,"football":0,"quiet":0,"like_math":0,"chess":1,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":0,"photography":0,"coding":0,"ml":1,"kpop":0,"technology":0},
+{"name":"Ar Rayyan","boy":1,"glasses":1,"football":1,"quiet":0,"like_math":0,"chess":1,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":1,"photography":1,"coding":0,"ml":0,"kpop":0,"technology":1},
+{"name":"Sarvyss","boy":1,"glasses":1,"football":0,"quiet":0,"like_math":1,"chess":1,"artist":0,"talktive":1,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":1,"photography":0,"coding":1,"ml":0,"kpop":0,"technology":1},
+{"name":"Shaffy","boy":1,"glasses":0,"football":1,"quiet":0,"like_math":0,"chess":1,"artist":0,"talktive":1,"foodie":1,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":1,"photography":1,"coding":0,"ml":1,"kpop":0,"technology":0},
+{"name":"Ahmad Rayyan","boy":1,"glasses":0,"football":1,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":1,"energetic":1,"ship":1,"pengawas":0,"photography":1,"coding":0,"ml":1,"kpop":0,"technology":0},
+{"name":"Manan","boy":1,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":0,"sporty":1,"energetic":1,"ship":0,"pengawas":0,"photography":1,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Ashraf","boy":1,"glasses":1,"football":0,"quiet":1,"like_math":0,"chess":1,"artist":0,"talktive":0,"foodie":0,"books":0,"melayu":0,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":0,"technology":1},
 
-    {"name": "Arissa S", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": False},
-    {"name": "Arissa Z", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": True},
-    {"name": "Adelia", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Wan Hana", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": False, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": False, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Hannah", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Zulaikha", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Qaisara", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Orked", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Attiyah", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": True},
-    {"name": "Najihah", "boy": False, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Fatehah", "boy": False, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Iris", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Irdina", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Qistina", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Qaireen", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Liza", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Aina", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Fitri", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Aishah", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Kamil", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": True, "kpop": False, "technology": False}
+{"name":"Arissa S","boy":0,"glasses":0,"football":0,"quiet":0,"like_math":1,"chess":1,"artist":0,"talktive":1,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":1,"ml":0,"kpop":1,"technology":0},
+{"name":"Arissa Z","boy":0,"glasses":0,"football":0,"quiet":1,"like_math":1,"chess":0,"artist":1,"talktive":0,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":1,"ml":0,"kpop":1,"technology":1},
+{"name":"Adelia","boy":0,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":0,"photography":1,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Wan Hana","boy":0,"glasses":0,"football":0,"quiet":1,"like_math":1,"chess":0,"artist":0,"talktive":0,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":0,"ship":0,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Hannah","boy":0,"glasses":1,"football":0,"quiet":0,"like_math":0,"chess":1,"artist":1,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Zulaikha","boy":0,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":1,"melayu":1,"sporty":1,"energetic":1,"ship":0,"pengawas":0,"photography":1,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Qaisara","boy":0,"glasses":1,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":1,"energetic":1,"ship":0,"pengawas":0,"photography":1,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Orked","boy":0,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":1,"artist":1,"talktive":1,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":1,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Attiyah","boy":0,"glasses":0,"football":0,"quiet":1,"like_math":0,"chess":0,"artist":1,"talktive":0,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":1,"technology":1},
+{"name":"Najihah","boy":0,"glasses":1,"football":0,"quiet":1,"like_math":0,"chess":0,"artist":1,"talktive":0,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Fatehah","boy":0,"glasses":1,"football":0,"quiet":1,"like_math":0,"chess":0,"artist":1,"talktive":0,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Iris","boy":0,"glasses":1,"football":0,"quiet":0,"like_math":1,"chess":0,"artist":1,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":1,"photography":1,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Irdina","boy":0,"glasses":1,"football":0,"quiet":0,"like_math":1,"chess":0,"artist":1,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":0,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Qistina","boy":0,"glasses":1,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":0,"photography":1,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Qaireen","boy":0,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":1,"energetic":1,"ship":1,"pengawas":1,"photography":0,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Liza","boy":0,"glasses":1,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":1,"talktive":1,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":1,"photography":0,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Aina","boy":0,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":1,"photography":1,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Fitri","boy":1,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":1,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":0,"pengawas":0,"photography":1,"coding":0,"ml":0,"kpop":0,"technology":0},
+{"name":"Aishah","boy":0,"glasses":0,"football":0,"quiet":0,"like_math":0,"chess":0,"artist":1,"talktive":1,"foodie":0,"books":1,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":1,"photography":0,"coding":0,"ml":0,"kpop":1,"technology":0},
+{"name":"Kamil","boy":1,"glasses":0,"football":1,"quiet":0,"like_math":0,"chess":0,"artist":0,"talktive":1,"foodie":0,"books":0,"melayu":1,"sporty":0,"energetic":1,"ship":1,"pengawas":1,"photography":0,"coding":0,"ml":1,"kpop":0,"technology":0}
 ]
+
+# =========================================================
+# QUESTIONS
+# =========================================================
 
 questions = [
-    ("boy", "Is the person a boy?"),
-    ("glasses", "Does the person wear glasses?"),
-    ("football", "Does the person play football?"),
-    ("quiet", "Is the person quiet?"),
-    ("like_math", "Does this person like math?"),
-    ("chess", "Does this person know how to play chess?"),
-    ("artist", "Are they good at drawing?"),
-    ("talktive", "Are they talkative?"),
-    ("foodie", "Do they really like food?"),
-    ("books", "Do they like reading books?"),
-    ("melayu", "Can they speak Melayu?"),
-    ("sporty", "Do you think this person joins many sport activities?"),
-    ("energetic", "Are they always energetic?"),
-    ("ship", "Does this person have a ship name with someone in our class?"),
-    ("pengawas", "Does this person hold the position of school prefect/Pengawas sekolah?"),
-    ("photography", "Does this person like taking photos?"),
-    ("coding", "Does this person like coding?"),
-    ("ml", "Does this person know how to play Mobile Legends?"),
-    ("kpop", "Does this person listen to K-pop?"),
-    ("technology", "Is this person interested in technology?")
+("boy","Is the person a boy?"),
+("glasses","Do they wear glasses?"),
+("football","Do they play football?"),
+("quiet","Are they quiet?"),
+("like_math","Do they like math?"),
+("chess","Do they know how to play chess?"),
+("artist","Are they good at drawing?"),
+("talktive","Are they talkative?"),
+("foodie","Do they really like food?"),
+("books","Do they like reading books?"),
+("melayu","Can they speak Melayu?"),
+("sporty","Do they join many sport activities?"),
+("energetic","Are they always energetic?"),
+("ship","Do they have a ship name with someone?"),
+("pengawas","Are they a school prefect?"),
+("photography","Do they like taking photos?"),
+("coding","Do they like coding?"),
+("ml","Do they know how to play Mobile Legends?"),
+("kpop","Do they listen to K-pop?"),
+("technology","Are they interested in technology?")
 ]
 
+# =========================================================
+# DESIGN
+# =========================================================
 
-def page_style():
-    return """
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+CSS = """
+<style>
+*{box-sizing:border-box}
+body{
+font-family:Arial;
+text-align:center;
+background:linear-gradient(135deg,#eef2ff,#fff);
+padding:20px;color:#222
+}
+.box{
+max-width:650px;margin:auto;background:white;padding:25px;
+border-radius:25px;box-shadow:0 5px 20px #bbb
+}
+h1{font-size:40px}
+.q{font-size:28px;font-weight:bold;margin:30px 0}
+button{
+font-size:25px;font-weight:bold;padding:20px 50px;
+margin:10px;border:3px solid #222;border-radius:15px;
+background:white;box-shadow:0 5px #222
+}
+button:active{transform:translateY(5px);box-shadow:none}
+.yes{background:#d8ffd8}.no{background:#ffd8d8}
+.restart{background:#eee}
+.face{font-size:100px;margin:10px}
+@media(max-width:600px){
+h1{font-size:32px}.q{font-size:23px}
+button{display:block;width:90%;margin:15px auto;font-size:27px}
+}
+</style>
+"""
 
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #eef2ff, #ffffff);
-            color: #222;
-            padding: 25px 15px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .title {
-            font-size: 42px;
-            font-weight: bold;
-        }
-
-        .subtitle {
-            font-size: 20px;
-            margin: 10px;
-        }
-
-        /* CARTOON */
-
-        .character {
-            width: 190px;
-            height: 210px;
-            margin: 10px auto 20px;
-            position: relative;
-        }
-
-        .head {
-            width: 170px;
-            height: 160px;
-            background: #f5cfa0;
-            border: 5px solid #222;
-            border-radius: 50% 50% 45% 45%;
-            position: absolute;
-            left: 10px;
-            top: 15px;
-            overflow: hidden;
-        }
-
-        .hair {
-            position: absolute;
-            width: 180px;
-            height: 65px;
-            background: #222;
-            top: -10px;
-            left: -8px;
-            border-radius: 50% 50% 20% 20%;
-        }
-
-        .eye {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background: white;
-            border: 4px solid #222;
-            border-radius: 50%;
-            top: 67px;
-        }
-
-        .eye::after {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: #222;
-            border-radius: 50%;
-            position: absolute;
-            top: 5px;
-            left: 5px;
-        }
-
-        .eye.left {
-            left: 38px;
-        }
-
-        .eye.right {
-            right: 38px;
-        }
-
-        .nose {
-            position: absolute;
-            top: 92px;
-            left: 75px;
-            font-size: 24px;
-        }
-
-        .mouth {
-            position: absolute;
-            top: 120px;
-            left: 58px;
-            width: 55px;
-            height: 20px;
-            border-bottom: 5px solid #222;
-            border-radius: 50%;
-        }
-
-        .body {
-            position: absolute;
-            width: 120px;
-            height: 75px;
-            background: #555;
-            left: 35px;
-            top: 150px;
-            border: 5px solid #222;
-            border-radius: 35px 35px 10px 10px;
-        }
-
-        .tie {
-            position: absolute;
-            width: 20px;
-            height: 45px;
-            background: #222;
-            left: 85px;
-            top: 160px;
-            clip-path: polygon(
-                50% 0%,
-                100% 30%,
-                70% 100%,
-                50% 80%,
-                30% 100%,
-                0% 30%
-            );
-        }
-
-        /* QUESTION */
-
-        .question-box {
-            background: white;
-            border: 4px solid #222;
-            border-radius: 20px;
-            padding: 25px;
-            margin: 20px auto;
-            max-width: 650px;
-            box-shadow: 0 6px 0 #222;
-        }
-
-        .question {
-            font-size: 29px;
-            font-weight: bold;
-        }
-
-        /* BUTTONS */
-
-        button {
-            font-size: 25px;
-            font-weight: bold;
-            padding: 18px 45px;
-            margin: 10px;
-            border-radius: 15px;
-            border: 3px solid #222;
-            background: white;
-            cursor: pointer;
-            box-shadow: 0 5px 0 #222;
-        }
-
-        button:active {
-            transform: translateY(5px);
-            box-shadow: 0 0 0 #222;
-        }
-
-        .yes {
-            background: #d9ffd9;
-        }
-
-        .no {
-            background: #ffd9d9;
-        }
-
-        .restart {
-            background: #eeeeee;
-        }
-
-        .stats {
-            font-size: 18px;
-            margin-top: 25px;
-        }
-
-        .result-name {
-            font-size: 48px;
-            font-weight: bold;
-        }
-
-        @media (max-width: 600px) {
-
-            body {
-                padding: 20px 10px;
-            }
-
-            .title {
-                font-size: 32px;
-            }
-
-            .question {
-                font-size: 24px;
-            }
-
-            button {
-                width: 90%;
-                font-size: 26px;
-                padding: 20px;
-                display: block;
-                margin: 12px auto;
-            }
-
-            .result-name {
-                font-size: 38px;
-            }
-
-        }
-
-    </style>
+def page(content):
+    return f"""
+    <html>
+    <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {CSS}
+    </head>
+    <body><div class="box">{content}</div></body>
+    </html>
     """
 
-
 # =========================================================
-# MAIN PAGE
+# GAME
 # =========================================================
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET","POST"])
 def home():
 
-    # Start with every classmate
-    remaining = classmates.copy()
-
-    question_number = 0
-
+    remaining = classmates[:]
     answers = {}
-
-    # =====================================================
-    # USER ANSWERED A QUESTION
-    # =====================================================
+    qnum = 0
 
     if request.method == "POST":
 
-        question_number = int(
-            request.form["question_number"]
-        )
+        qnum = int(request.form["qnum"])
 
-        # Recover previous answers
-        for key, value in request.form.items():
+        for k,v in request.form.items():
+            if k.startswith("a_"):
+                answers[k[2:]] = v == "1"
 
-            if key.startswith("answer_"):
+        attr = request.form["attr"]
+        answers[attr] = request.form["answer"] == "1"
 
-                attribute = key.replace(
-                    "answer_",
-                    ""
-                )
+        qnum += 1
 
-                answers[attribute] = (
-                    value == "yes"
-                )
-
-        # Current answer
-        current_attribute = request.form[
-            "current_attribute"
-        ]
-
-        current_answer = request.form[
-            "answer"
-        ]
-
-        answers[current_attribute] = (
-            current_answer == "yes"
-        )
-
-        # Filter classmates
-        for attribute, answer in answers.items():
-
+        for attr,answer in answers.items():
             remaining = [
-                person
-                for person in remaining
-                if person.get(attribute) == answer
+                p for p in remaining
+                if p.get(attr) == answer
             ]
 
-        # Move to next question
-        question_number += 1
-
-
     # =====================================================
-    # ASK ALL 20 QUESTIONS
+    # ZERO PEOPLE → STOP IMMEDIATELY
     # =====================================================
 
-    # IMPORTANT:
-    # We DO NOT guess here even if only 1 person remains.
+    if not remaining:
+        return page("""
+        <h1>🤔 I CAN'T GUESS!</h1>
 
-    if question_number < len(questions):
+        <div class="face">😵‍💫</div>
 
-        attribute, question = questions[
-            question_number
-        ]
+        <h2>I can't guess who it is!</h2>
 
-        hidden_answers = ""
+        <p>None of the classmates match your answers.</p>
 
-        for key, value in answers.items():
-
-            hidden_answers += f"""
-            <input
-                type="hidden"
-                name="answer_{key}"
-                value="{"yes" if value else "no"}"
-            >
-            """
-
-        return f"""
-        <html>
-
-        <head>
-
-            <title>Class Akinator</title>
-
-            {page_style()}
-
-        </head>
-
-        <body>
-
-        <div class="container">
-
-            <div class="title">
-                CLASS AKINATOR
-            </div>
-
-            <div class="subtitle">
-                Think of someone in your class!
-            </div>
-
-
-            <!-- CHARACTER -->
-
-            <div class="character">
-
-                <div class="head">
-
-                    <div class="hair"></div>
-
-                    <div class="eye left"></div>
-
-                    <div class="eye right"></div>
-
-                    <div class="nose">
-                        ▼
-                    </div>
-
-                    <div class="mouth"></div>
-
-                </div>
-
-                <div class="body"></div>
-
-                <div class="tie"></div>
-
-            </div>
-
-
-            <!-- QUESTION -->
-
-            <div class="question-box">
-
-                <div class="question">
-                    {question}
-                </div>
-
-            </div>
-
-
-            <!-- FORM -->
-
-            <form method="POST">
-
-                {hidden_answers}
-
-                <input
-                    type="hidden"
-                    name="question_number"
-                    value="{question_number}"
-                >
-
-                <input
-                    type="hidden"
-                    name="current_attribute"
-                    value="{attribute}"
-                >
-
-                <button
-                    class="yes"
-                    name="answer"
-                    value="yes"
-                >
-                    YES
-                </button>
-
-                <button
-                    class="no"
-                    name="answer"
-                    value="no"
-                >
-                    NO
-                </button>
-
-            </form>
-
-
-            <!-- INFORMATION -->
-
-            <div class="stats">
-
-                Possible people:
-                {len(remaining)}
-
-                <br><br>
-
-                Question
-                {question_number + 1}
-                of
-                {len(questions)}
-
-            </div>
-
-
-            <!-- RESTART -->
-
-            <a href="/restart">
-
-                <button class="restart">
-                    🔄 START AGAIN
-                </button>
-
-            </a>
-
-        </div>
-
-        </body>
-
-        </html>
-        """
-
+        <a href="/restart">
+        <button class="restart">🔄 TRY AGAIN</button>
+        </a>
+        """)
 
     # =====================================================
-    # AFTER QUESTION 20
+    # ASK NEXT QUESTION
+    # =====================================================
+
+    if qnum < len(questions):
+
+        attr,text = questions[qnum]
+
+        hidden = ""
+
+        for k,v in answers.items():
+            hidden += f'<input type="hidden" name="a_{k}" value="{int(v)}">'
+
+        return page(f"""
+        <h1>🧞 CLASS AKINATOR</h1>
+
+        <div class="face">🧑‍💻</div>
+
+        <div class="q">{text}</div>
+
+        <form method="POST">
+
+        {hidden}
+
+        <input type="hidden" name="qnum" value="{qnum}">
+        <input type="hidden" name="attr" value="{attr}">
+
+        <button class="yes" name="answer" value="1">YES</button>
+        <button class="no" name="answer" value="0">NO</button>
+
+        </form>
+
+        <p>
+        Question {qnum+1} / {len(questions)}
+        <br>
+        Possible people: {len(remaining)}
+        </p>
+
+        <a href="/restart">
+        <button class="restart">🔄 RESTART</button>
+        </a>
+        """)
+
+    # =====================================================
+    # ONE PERSON LEFT
     # =====================================================
 
     if len(remaining) == 1:
 
-        person = remaining[0]
+        return page(f"""
+        <h1>🎯 I GOT IT!</h1>
 
-        return f"""
-        <html>
+        <div class="face">😎</div>
 
-        <head>
+        <h2>{remaining[0]["name"]}</h2>
 
-            <title>Class Akinator</title>
-
-            {page_style()}
-
-        </head>
-
-        <body>
-
-        <div class="container">
-
-            <div class="title">
-                CLASS AKINATOR
-            </div>
-
-
-            <div class="character">
-
-                <div class="head">
-
-                    <div class="hair"></div>
-
-                    <div class="eye left"></div>
-
-                    <div class="eye right"></div>
-
-                    <div class="nose">
-                        ▼
-                    </div>
-
-                    <div class="mouth"></div>
-
-                </div>
-
-                <div class="body"></div>
-
-                <div class="tie"></div>
-
-            </div>
-
-
-            <div class="question-box">
-
-                <h2>
-                    🎯 I KNOW WHO IT IS!
-                </h2>
-
-                <div class="result-name">
-                    {person["name"]}
-                </div>
-
-                <p class="subtitle">
-                    Was I right?
-                </p>
-
-            </div>
-
-
-            <a href="/restart">
-
-                <button class="yes">
-                    YES!
-                </button>
-
-            </a>
-
-            <a href="/restart">
-
-                <button class="no">
-                    NO
-                </button>
-
-            </a>
-
-
-            <a href="/restart">
-
-                <button class="restart">
-                    🔄 START AGAIN
-                </button>
-
-            </a>
-
-        </div>
-
-        </body>
-
-        </html>
-        """
-
-
-    # =====================================================
-    # ZERO MATCHES
-    # =====================================================
-
-    if len(remaining) == 0:
-
-        return f"""
-        <html>
-
-        <head>
-
-            <title>Class Akinator</title>
-
-            {page_style()}
-
-        </head>
-
-        <body>
-
-        <div class="container">
-
-            <div class="title">
-                CLASS AKINATOR
-            </div>
-
-
-            <div class="character">
-
-                <div class="head">
-
-                    <div class="hair"></div>
-
-                    <div class="eye left"></div>
-
-                    <div class="eye right"></div>
-
-                    <div class="nose">
-                        ▼
-                    </div>
-
-                    <div class="mouth"></div>
-
-                </div>
-
-                <div class="body"></div>
-
-                <div class="tie"></div>
-
-            </div>
-
-
-            <div class="question-box">
-
-                <h2>
-                    🤔 Hmm...
-                </h2>
-
-                <p class="question">
-                    None of the classmates matched
-                    all those answers.
-                </p>
-
-            </div>
-
-
-            <a href="/restart">
-
-                <button class="restart">
-                    🔄 START AGAIN
-                </button>
-
-            </a>
-
-        </div>
-
-        </body>
-
-        </html>
-        """
-
-
-    # =====================================================
-    # MULTIPLE PEOPLE AFTER 20 QUESTIONS
-    # =====================================================
-
-    names = ""
-
-    for person in remaining:
-
-        names += f"<li>{person['name']}</li>"
-
-
-    return f"""
-    <html>
-
-    <head>
-
-        <title>Class Akinator</title>
-
-        {page_style()}
-
-    </head>
-
-    <body>
-
-    <div class="container">
-
-        <div class="title">
-            CLASS AKINATOR
-        </div>
-
-
-        <div class="character">
-
-            <div class="head">
-
-                <div class="hair"></div>
-
-                <div class="eye left"></div>
-
-                <div class="eye right"></div>
-
-                <div class="nose">
-                    ▼
-                </div>
-
-                <div class="mouth"></div>
-
-            </div>
-
-            <div class="body"></div>
-
-            <div class="tie"></div>
-
-        </div>
-
-
-        <div class="question-box">
-
-            <h2>
-                🤔 I'm not completely sure...
-            </h2>
-
-            <p class="question">
-                It could be:
-            </p>
-
-            <ul style="
-                font-size:22px;
-                text-align:left;
-            ">
-
-                {names}
-
-            </ul>
-
-        </div>
-
+        <p>Was I right?</p>
 
         <a href="/restart">
-
-            <button class="restart">
-                🔄 START AGAIN
-            </button>
-
+        <button class="yes">YES!</button>
         </a>
 
-    </div>
+        <a href="/restart">
+        <button class="no">NO</button>
+        </a>
 
-    </body>
+        <br>
 
-    </html>
-    """
+        <a href="/restart">
+        <button class="restart">🔄 PLAY AGAIN</button>
+        </a>
+        """)
 
+    # =====================================================
+    # STILL MULTIPLE PEOPLE AFTER ALL QUESTIONS
+    # =====================================================
+
+    names = "<br>".join(p["name"] for p in remaining)
+
+    return page(f"""
+    <h1>🤔 NOT SURE</h1>
+
+    <div class="face">🧐</div>
+
+    <h2>It could be:</h2>
+
+    <p style="font-size:22px">{names}</p>
+
+    <a href="/restart">
+    <button class="restart">🔄 PLAY AGAIN</button>
+    </a>
+    """)
 
 # =========================================================
 # RESTART
@@ -798,15 +261,8 @@ def home():
 
 @app.route("/restart")
 def restart():
-
     return home()
 
-
-# =========================================================
-# RUN
 # =========================================================
 
-app.run(
-    host="0.0.0.0",
-    port=5000
-)
+app.run(host="0.0.0.0", port=5000)
