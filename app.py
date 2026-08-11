@@ -357,7 +357,7 @@ def home():
     # GUESS
     # =========================
 
-    if len(remaining) == 1:
+    if len(remaining) == 1 and question_number >= len(question):
 
         return f"""
         <html>
