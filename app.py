@@ -2,9 +2,6 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-# =========================
-# YOUR CLASSMATES
-# =========================
 
 classmates = [
     {"name": "Adamah", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
@@ -17,6 +14,7 @@ classmates = [
     {"name": "Ahmad Rayyan", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
     {"name": "Manan", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": False, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
     {"name": "Ashraf", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": False, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": True},
+
     {"name": "Arissa S", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": False},
     {"name": "Arissa Z", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": True},
     {"name": "Adelia", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
@@ -38,11 +36,6 @@ classmates = [
     {"name": "Aishah", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
     {"name": "Kamil", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": True, "kpop": False, "technology": False}
 ]
-
-
-# =========================
-# QUESTIONS
-# =========================
 
 questions = [
     ("boy", "Is the person a boy?"),
@@ -68,15 +61,12 @@ questions = [
 ]
 
 
-# =========================
-# SHARED CSS
-# =========================
-
 def page_style():
     return """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -99,22 +89,19 @@ def page_style():
         .title {
             font-size: 42px;
             font-weight: bold;
-            margin-bottom: 10px;
         }
 
         .subtitle {
             font-size: 20px;
-            margin-bottom: 25px;
+            margin: 10px;
         }
 
-        /* =====================
-           CARTOON CHARACTER
-           ===================== */
+        /* CARTOON */
 
         .character {
             width: 190px;
             height: 210px;
-            margin: 20px auto 30px;
+            margin: 10px auto 20px;
             position: relative;
         }
 
@@ -132,11 +119,11 @@ def page_style():
 
         .hair {
             position: absolute;
-            width: 175px;
+            width: 180px;
             height: 65px;
             background: #222;
             top: -10px;
-            left: -7px;
+            left: -8px;
             border-radius: 50% 50% 20% 20%;
         }
 
@@ -204,12 +191,17 @@ def page_style():
             background: #222;
             left: 85px;
             top: 160px;
-            clip-path: polygon(50% 0%, 100% 30%, 70% 100%, 50% 80%, 30% 100%, 0% 30%);
+            clip-path: polygon(
+                50% 0%,
+                100% 30%,
+                70% 100%,
+                50% 80%,
+                30% 100%,
+                0% 30%
+            );
         }
 
-        /* =====================
-           QUESTION BOX
-           ===================== */
+        /* QUESTION */
 
         .question-box {
             background: white;
@@ -226,9 +218,7 @@ def page_style():
             font-weight: bold;
         }
 
-        /* =====================
-           BUTTONS
-           ===================== */
+        /* BUTTONS */
 
         button {
             font-size: 25px;
@@ -240,7 +230,6 @@ def page_style():
             background: white;
             cursor: pointer;
             box-shadow: 0 5px 0 #222;
-            transition: transform 0.1s;
         }
 
         button:active {
@@ -265,10 +254,6 @@ def page_style():
             margin-top: 25px;
         }
 
-        a {
-            text-decoration: none;
-        }
-
         .result-name {
             font-size: 48px;
             font-weight: bold;
@@ -284,19 +269,6 @@ def page_style():
                 font-size: 32px;
             }
 
-            .subtitle {
-                font-size: 18px;
-            }
-
-            .character {
-                transform: scale(0.85);
-                margin: 5px auto 10px;
-            }
-
-            .question-box {
-                padding: 20px 12px;
-            }
-
             .question {
                 font-size: 24px;
             }
@@ -305,123 +277,349 @@ def page_style():
                 width: 90%;
                 font-size: 26px;
                 padding: 20px;
-                margin: 10px auto;
                 display: block;
+                margin: 12px auto;
             }
 
             .result-name {
                 font-size: 38px;
             }
+
         }
+
     </style>
     """
 
 
-# =========================
-# WEBSITE
-# =========================
+# =========================================================
+# MAIN PAGE
+# =========================================================
 
 @app.route("/", methods=["GET", "POST"])
 def home():
 
+    # Start with every classmate
     remaining = classmates.copy()
 
     question_number = 0
+
     answers = {}
+
+    # =====================================================
+    # USER ANSWERED A QUESTION
+    # =====================================================
 
     if request.method == "POST":
 
-        question_number = int(request.form["question_number"])
+        question_number = int(
+            request.form["question_number"]
+        )
 
+        # Recover previous answers
         for key, value in request.form.items():
 
             if key.startswith("answer_"):
-                attribute = key.replace("answer_", "")
-                answers[attribute] = value == "yes"
 
-        current_attribute = request.form["current_attribute"]
-        current_answer = request.form["answer"]
+                attribute = key.replace(
+                    "answer_",
+                    ""
+                )
 
-        answers[current_attribute] = current_answer == "yes"
+                answers[attribute] = (
+                    value == "yes"
+                )
 
+        # Current answer
+        current_attribute = request.form[
+            "current_attribute"
+        ]
+
+        current_answer = request.form[
+            "answer"
+        ]
+
+        answers[current_attribute] = (
+            current_answer == "yes"
+        )
+
+        # Filter classmates
         for attribute, answer in answers.items():
 
             remaining = [
-                person for person in remaining
-                if person[attribute] == answer
+                person
+                for person in remaining
+                if person.get(attribute) == answer
             ]
 
+        # Move to next question
         question_number += 1
 
-    # =========================
-    # GUESS
-    # =========================
 
-    if len(remaining) == 1 and question_number >= len(question):
+    # =====================================================
+    # ASK ALL 20 QUESTIONS
+    # =====================================================
+
+    # IMPORTANT:
+    # We DO NOT guess here even if only 1 person remains.
+
+    if question_number < len(questions):
+
+        attribute, question = questions[
+            question_number
+        ]
+
+        hidden_answers = ""
+
+        for key, value in answers.items():
+
+            hidden_answers += f"""
+            <input
+                type="hidden"
+                name="answer_{key}"
+                value="{"yes" if value else "no"}"
+            >
+            """
 
         return f"""
         <html>
 
         <head>
+
             <title>Class Akinator</title>
+
             {page_style()}
+
         </head>
 
         <body>
 
         <div class="container">
 
-        <div class="title">CLASS AKINATOR</div>
-
-        <div class="character">
-
-            <div class="head">
-                <div class="hair"></div>
-
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-
-                <div class="nose">▼</div>
-                <div class="mouth"></div>
+            <div class="title">
+                CLASS AKINATOR
             </div>
 
-            <div class="body"></div>
-            <div class="tie"></div>
-
-        </div>
-
-        <div class="question-box">
-
-            <h2>🎯 I KNOW WHO IT IS!</h2>
-
-            <div class="result-name">
-                {remaining[0]["name"]}
+            <div class="subtitle">
+                Think of someone in your class!
             </div>
 
-            <p class="subtitle">
-                Was I right?
-            </p>
 
-        </div>
+            <!-- CHARACTER -->
 
-        <button class="yes">YES!</button>
-        <button class="no">NO</button>
+            <div class="character">
 
-        <br>
+                <div class="head">
 
-        <a href="/restart">
-            <button class="restart">🔄 START AGAIN</button>
-        </a>
+                    <div class="hair"></div>
+
+                    <div class="eye left"></div>
+
+                    <div class="eye right"></div>
+
+                    <div class="nose">
+                        ▼
+                    </div>
+
+                    <div class="mouth"></div>
+
+                </div>
+
+                <div class="body"></div>
+
+                <div class="tie"></div>
+
+            </div>
+
+
+            <!-- QUESTION -->
+
+            <div class="question-box">
+
+                <div class="question">
+                    {question}
+                </div>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form method="POST">
+
+                {hidden_answers}
+
+                <input
+                    type="hidden"
+                    name="question_number"
+                    value="{question_number}"
+                >
+
+                <input
+                    type="hidden"
+                    name="current_attribute"
+                    value="{attribute}"
+                >
+
+                <button
+                    class="yes"
+                    name="answer"
+                    value="yes"
+                >
+                    YES
+                </button>
+
+                <button
+                    class="no"
+                    name="answer"
+                    value="no"
+                >
+                    NO
+                </button>
+
+            </form>
+
+
+            <!-- INFORMATION -->
+
+            <div class="stats">
+
+                Possible people:
+                {len(remaining)}
+
+                <br><br>
+
+                Question
+                {question_number + 1}
+                of
+                {len(questions)}
+
+            </div>
+
+
+            <!-- RESTART -->
+
+            <a href="/restart">
+
+                <button class="restart">
+                    🔄 START AGAIN
+                </button>
+
+            </a>
 
         </div>
 
         </body>
+
         </html>
         """
 
-    # =========================
-    # NO MATCH
-    # =========================
+
+    # =====================================================
+    # AFTER QUESTION 20
+    # =====================================================
+
+    if len(remaining) == 1:
+
+        person = remaining[0]
+
+        return f"""
+        <html>
+
+        <head>
+
+            <title>Class Akinator</title>
+
+            {page_style()}
+
+        </head>
+
+        <body>
+
+        <div class="container">
+
+            <div class="title">
+                CLASS AKINATOR
+            </div>
+
+
+            <div class="character">
+
+                <div class="head">
+
+                    <div class="hair"></div>
+
+                    <div class="eye left"></div>
+
+                    <div class="eye right"></div>
+
+                    <div class="nose">
+                        ▼
+                    </div>
+
+                    <div class="mouth"></div>
+
+                </div>
+
+                <div class="body"></div>
+
+                <div class="tie"></div>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h2>
+                    🎯 I KNOW WHO IT IS!
+                </h2>
+
+                <div class="result-name">
+                    {person["name"]}
+                </div>
+
+                <p class="subtitle">
+                    Was I right?
+                </p>
+
+            </div>
+
+
+            <a href="/restart">
+
+                <button class="yes">
+                    YES!
+                </button>
+
+            </a>
+
+            <a href="/restart">
+
+                <button class="no">
+                    NO
+                </button>
+
+            </a>
+
+
+            <a href="/restart">
+
+                <button class="restart">
+                    🔄 START AGAIN
+                </button>
+
+            </a>
+
+        </div>
+
+        </body>
+
+        </html>
+        """
+
+
+    # =====================================================
+    # ZERO MATCHES
+    # =====================================================
 
     if len(remaining) == 0:
 
@@ -429,141 +627,97 @@ def home():
         <html>
 
         <head>
+
             <title>Class Akinator</title>
+
             {page_style()}
+
         </head>
 
         <body>
 
         <div class="container">
 
-        <div class="title">CLASS AKINATOR</div>
-
-        <div class="character">
-
-            <div class="head">
-                <div class="hair"></div>
-
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-
-                <div class="nose">▼</div>
-                <div class="mouth"></div>
+            <div class="title">
+                CLASS AKINATOR
             </div>
 
-            <div class="body"></div>
-            <div class="tie"></div>
 
-        </div>
+            <div class="character">
 
-        <div class="question-box">
+                <div class="head">
 
-            <h2>🤔 Hmm...</h2>
+                    <div class="hair"></div>
 
-            <p class="question">
-                I couldn't find anyone who matches those answers.
-            </p>
+                    <div class="eye left"></div>
 
-        </div>
+                    <div class="eye right"></div>
 
-        <a href="/restart">
-            <button class="restart">🔄 START AGAIN</button>
-        </a>
+                    <div class="nose">
+                        ▼
+                    </div>
+
+                    <div class="mouth"></div>
+
+                </div>
+
+                <div class="body"></div>
+
+                <div class="tie"></div>
+
+            </div>
+
+
+            <div class="question-box">
+
+                <h2>
+                    🤔 Hmm...
+                </h2>
+
+                <p class="question">
+                    None of the classmates matched
+                    all those answers.
+                </p>
+
+            </div>
+
+
+            <a href="/restart">
+
+                <button class="restart">
+                    🔄 START AGAIN
+                </button>
+
+            </a>
 
         </div>
 
         </body>
+
         </html>
         """
 
-    # =========================
-    # FINISHED QUESTIONS
-    # =========================
 
-    if question_number >= len(questions):
+    # =====================================================
+    # MULTIPLE PEOPLE AFTER 20 QUESTIONS
+    # =====================================================
 
-        names = ""
+    names = ""
 
-        for person in remaining:
-            names += f"<li>{person['name']}</li>"
+    for person in remaining:
 
-        return f"""
-        <html>
+        names += f"<li>{person['name']}</li>"
 
-        <head>
-            <title>Class Akinator</title>
-            {page_style()}
-        </head>
-
-        <body>
-
-        <div class="container">
-
-        <div class="title">CLASS AKINATOR</div>
-
-        <div class="character">
-
-            <div class="head">
-                <div class="hair"></div>
-
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-
-                <div class="nose">▼</div>
-                <div class="mouth"></div>
-            </div>
-
-            <div class="body"></div>
-            <div class="tie"></div>
-
-        </div>
-
-        <div class="question-box">
-
-            <h2>🤔 I'm not completely sure...</h2>
-
-            <p class="question">
-                It could be:
-            </p>
-
-            <ul style="font-size: 22px; text-align: left;">
-                {names}
-            </ul>
-
-        </div>
-
-        <a href="/restart">
-            <button class="restart">🔄 START AGAIN</button>
-        </a>
-
-        </div>
-
-        </body>
-        </html>
-        """
-
-    # =========================
-    # SHOW QUESTION
-    # =========================
-
-    attribute, question = questions[question_number]
-
-    hidden_answers = ""
-
-    for key, value in answers.items():
-
-        hidden_answers += f"""
-        <input type="hidden"
-               name="answer_{key}"
-               value="{"yes" if value else "no"}">
-        """
 
     return f"""
     <html>
 
     <head>
+
         <title>Class Akinator</title>
+
         {page_style()}
+
     </head>
 
     <body>
@@ -574,11 +728,6 @@ def home():
             CLASS AKINATOR
         </div>
 
-        <div class="subtitle">
-            Think of someone in your class!
-        </div>
-
-        <!-- CARTOON CHARACTER -->
 
         <div class="character">
 
@@ -587,73 +736,52 @@ def home():
                 <div class="hair"></div>
 
                 <div class="eye left"></div>
+
                 <div class="eye right"></div>
 
-                <div class="nose">▼</div>
+                <div class="nose">
+                    ▼
+                </div>
 
                 <div class="mouth"></div>
 
             </div>
 
             <div class="body"></div>
+
             <div class="tie"></div>
 
         </div>
 
-        <!-- QUESTION -->
 
         <div class="question-box">
 
-            <div class="question">
-                {question}
-            </div>
+            <h2>
+                🤔 I'm not completely sure...
+            </h2>
+
+            <p class="question">
+                It could be:
+            </p>
+
+            <ul style="
+                font-size:22px;
+                text-align:left;
+            ">
+
+                {names}
+
+            </ul>
 
         </div>
 
-        <!-- ANSWERS -->
-
-        <form method="POST">
-
-            {hidden_answers}
-
-            <input type="hidden"
-                   name="question_number"
-                   value="{question_number}">
-
-            <input type="hidden"
-                   name="current_attribute"
-                   value="{attribute}">
-
-            <button class="yes"
-                    name="answer"
-                    value="yes">
-                YES
-            </button>
-
-            <button class="no"
-                    name="answer"
-                    value="no">
-                NO
-            </button>
-
-        </form>
-
-        <div class="stats">
-
-            Possible people: {len(remaining)}
-
-            <br><br>
-
-            Question {question_number + 1} of {len(questions)}
-
-        </div>
-
-        <br>
 
         <a href="/restart">
+
             <button class="restart">
                 🔄 START AGAIN
             </button>
+
         </a>
 
     </div>
@@ -664,17 +792,21 @@ def home():
     """
 
 
-# =========================
+# =========================================================
 # RESTART
-# =========================
+# =========================================================
 
 @app.route("/restart")
 def restart():
+
     return home()
 
 
-# =========================
-# START SERVER
-# =========================
+# =========================================================
+# RUN
+# =========================================================
 
-app.run(host="0.0.0.0", port=5000)
+app.run(
+    host="0.0.0.0",
+    port=5000
+)
