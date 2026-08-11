@@ -45,28 +45,26 @@ classmates = [
 # =========================
 
 questions = [
-  {
     ("boy", "Is the person a boy?"),
     ("glasses", "Does the person wear glasses?"),
     ("football", "Does the person play football?"),
     ("quiet", "Is the person quiet?"),
-    ("like_math", "Does this person like math"),
+    ("like_math", "Does this person like math?"),
     ("chess", "Does this person know how to play chess?"),
-    ("artist", "Are they good at drawing"),
-    ("talktive", "are they talktive"),
-    ("foodie", "Do they really like food"),
-    ("books", "Do they like reading books"),
-    ("melayu", "Can they speak Melayu"),
-    ("sporty", "Do you think this person Join so many sport Activities"),
-    ("energetic", "Are they always energetic"),
-    ("ship", "Does this person has their own ship name with someone -our class only-"),
-    ("pengawas", "Does this person hold the position of school prefect/Pengawas sekolah"),
-    ("photography", "Does this person like to take photos"),
-    ("coding", "Does this person love to Coding"),
-    ("ml", "Does this person really know how to play Mobile legends"),
-    ("kpop", "Does this person listen to K-pop"),
-    ("technology", "Does this person interested in technology")
-  }
+    ("artist", "Are they good at drawing?"),
+    ("talktive", "Are they talkative?"),
+    ("foodie", "Do they really like food?"),
+    ("books", "Do they like reading books?"),
+    ("melayu", "Can they speak Melayu?"),
+    ("sporty", "Do you think this person joins many sport activities?"),
+    ("energetic", "Are they always energetic?"),
+    ("ship", "Does this person have a ship name with someone in our class?"),
+    ("pengawas", "Does this person hold the position of school prefect/Pengawas sekolah?"),
+    ("photography", "Does this person like taking photos?"),
+    ("coding", "Does this person like coding?"),
+    ("ml", "Does this person know how to play Mobile Legends?"),
+    ("kpop", "Does this person listen to K-pop?"),
+    ("technology", "Is this person interested in technology?")
 ]
 
 
