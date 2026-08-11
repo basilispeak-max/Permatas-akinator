@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 # =========================
 # YOUR CLASSMATES
@@ -10,13 +10,14 @@ classmates = [
     {"name": "Adamah", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
     {"name": "Saif", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
     {"name": "Yusuf", "boy": True, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
-    {"name": "Izzat", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": False, "coding": False, "ml": True, "kpok": False, "technology": False},
+    {"name": "Izzat", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": False, "coding": False, "ml": True, "kpop": False, "technology": False},
     {"name": "Ar Rayyan", "boy": True, "glasses": True, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": True},
-    {"name": "Sarvyss", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": False, "coding": True, "ml": False, "kpok": False, "technology": True},
+    {"name": "Sarvyss", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
     {"name": "Shaffy", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": True, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
     {"name": "Ahmad Rayyan", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
     {"name": "Manan", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": False, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
     {"name": "Ashraf", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": False, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": True},
+
     {"name": "Arissa S", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": False},
     {"name": "Arissa Z", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": True},
     {"name": "Adelia", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
@@ -33,9 +34,9 @@ classmates = [
     {"name": "Qistina", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
     {"name": "Qaireen", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
     {"name": "Liza", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
-    {"name": "Aina", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess":False, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Aina", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
     {"name": "Fitri", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
-    {"name": "Aishah ", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Aishah", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
     {"name": "Kamil", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": True, "kpop": False, "technology": False}
 ]
 
@@ -134,11 +135,20 @@ def home():
         <button>YES!</button>
         <button>NO</button>
 
+        <br><br>
+
+        <a href="/restart">
+            <button>🔄 START AGAIN</button>
+        </a>
+
         </body>
         </html>
         """
 
-    # No one matches
+    # =========================
+    # NO ONE MATCHES
+    # =========================
+
     if len(remaining) == 0:
 
         return """
@@ -155,11 +165,20 @@ def home():
 
         <p>I couldn't find anyone who matches those answers.</p>
 
+        <br>
+
+        <a href="/restart">
+            <button>🔄 START AGAIN</button>
+        </a>
+
         </body>
         </html>
         """
 
-    # Finished questions
+    # =========================
+    # FINISHED QUESTIONS
+    # =========================
+
     if question_number >= len(questions):
 
         names = ""
@@ -184,6 +203,12 @@ def home():
         <ul>
             {names}
         </ul>
+
+        <br>
+
+        <a href="/restart">
+            <button>🔄 START AGAIN</button>
+        </a>
 
         </body>
         </html>
@@ -251,10 +276,29 @@ def home():
         Question {question_number + 1} of {len(questions)}
     </p>
 
+    <br>
+
+    <a href="/restart">
+        <button>🔄 START AGAIN</button>
+    </a>
+
     </body>
 
     </html>
     """
 
+
+# =========================
+# RESTART
+# =========================
+
+@app.route("/restart")
+def restart():
+    return home()
+
+
+# =========================
+# START SERVER
+# =========================
 
 app.run(host="0.0.0.0", port=5000)
