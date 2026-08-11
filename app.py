@@ -55,7 +55,7 @@ questions = [
     ("talktive", "are they talktive")
     ("foodie", "Do they really like food"
     ("books", "Do they like reading books")
-    ("melayu", "Can they speak Melayu"
+    ("melayu", "Can they speak Melayu")
     ("sporty", "Do you think this person Join so many sport Activities")
     ("energetic", "Are they always energetic")
     ("ship", "Does this person has their own ship name with someone (in our class only) ")
