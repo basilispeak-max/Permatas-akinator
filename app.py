@@ -7,36 +7,36 @@ app = Flask(__name__)
 # =========================
 
 classmates = [
-    {"name": "Adamah", "boy": True, "glasses": False, "football": True, "quiet": False},
-    {"name": "Saif", "boy": True, "glasses": True, "football": False, "quiet": True},
-    {"name": "Yusuf", "boy": True, "glasses": False, "football": False, "quiet": True},
-    {"name": "Izzat", "boy": True, "glasses": True, "football": False, "quiet": False},
-    {"name": "Ar Rayyan", "boy": True, "glasses": True, "football": True, "quiet": False},
-    {"name": "Sarvyss", "boy": True, "glasses": True, "football": False, "quiet": False},
-    {"name": "Shaffy", "boy": True, "glasses": False, "football": True, "quiet": False},
-    {"name": "Ahmad Rayyan", "boy": True, "glasses": False, "football": True, "quiet": False},
-    {"name": "Manan", "boy": True, "glasses": False, "football": False, "quiet": False},
-    {"name": "Ashraf", "boy": True, "glasses": True, "football": False, "quiet": True},
-    {"name": "Arissa S", "boy": False, "glasses": False, "football": False, "quiet": False},
-    {"name": "Arissa Z", "boy": False, "glasses": False, "football": False, "quiet": True},
-    {"name": "Adelia", "boy": False, "glasses": False, "football": False, "quiet": False},
-    {"name": "Wan Hana", "boy": False, "glasses": False, "football": False, "quiet": True},
-    {"name": "Hannah", "boy": False, "glasses": True, "football": False, "quiet": False},
-    {"name": "Zulaikha", "boy": False, "glasses": False, "football": False, "quiet": False},
-    {"name": "Qaisara", "boy": False, "glasses": True, "football": False, "quiet": False},
-    {"name": "Orked", "boy": False, "glasses": False, "football": False, "quiet": False},
-    {"name": "Attiyah", "boy": False, "glasses": False, "football": False, "quiet": True},
-    {"name": "Najihah", "boy": False, "glasses": True, "football": False, "quiet": True},
-    {"name": "Fatehah", "boy": False, "glasses": True, "football": False, "quiet": True},
-    {"name": "Iris", "boy": False, "glasses": True, "football": False, "quiet": False},
-    {"name": "Irdina", "boy": False, "glasses": True, "football": False, "quiet": False},
-    {"name": "Qistina", "boy": False, "glasses": True, "football": False, "quiet": False},
-    {"name": "Qaireen", "boy": False, "glasses": False, "football": False, "quiet": False},
-    {"name": "Liza", "boy": False, "glasses": True, "football": False, "quiet": False},
-    {"name": "Aina", "boy": False, "glasses": False, "football": False, "quiet": False},
-    {"name": "Fitri", "boy": True, "glasses": False, "football": False, "quiet": False},
-    {"name": "Aishah ", "boy": False, "glasses": False, "football": False, "quiet": False},
-    {"name": "Kamil", "boy": True, "glasses": False, "football": True, "quiet": False}
+    {"name": "Adamah", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
+    {"name": "Saif", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Yusuf", "boy": True, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": False, "technology": True},
+    {"name": "Izzat", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": False, "coding": False, "ml": True, "kpok": False, "technology": False},
+    {"name": "Ar Rayyan", "boy": True, "glasses": True, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": True},
+    {"name": "Sarvyss", "boy": True, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": False, "coding": True, "ml": False, "kpok": False, "technology": True},
+    {"name": "Shaffy", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": True, "artist": False, "talktive": True, "foodie": True, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
+    {"name": "Ahmad Rayyan", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
+    {"name": "Manan", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": False, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Ashraf", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": False, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": True},
+    {"name": "Arissa S", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": False},
+    {"name": "Arissa Z", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": True},
+    {"name": "Adelia", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Wan Hana", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": False, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": False, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Hannah", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Zulaikha", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Qaisara", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Orked", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": True, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True "technology": False},
+    {"name": "Attiyah", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": True},
+    {"name": "Najihah", "boy": False, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Fatehah", "boy": False, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Iris", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Irdina", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": True, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Qistina", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Qaireen", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Liza", "boy": False, "glasses": True, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Aina", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess":False, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Fitri", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
+    {"name": "Aishah ", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": True, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": False, "kpop": True, "technology": False},
+    {"name": "Kamil", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": True, "photography": False, "coding": False, "ml": True, "kpop": False, "technology": False}
 ]
 
 
@@ -49,6 +49,22 @@ questions = [
     ("glasses", "Does the person wear glasses?"),
     ("football", "Does the person play football?"),
     ("quiet", "Is the person quiet?")
+    ("like_math", "Does this person like math")
+    ("chess", "Does this person know how to play chess?")
+    ("artist", "Are they good at drawing")
+    ("talktive", "are they talktive")
+    ("foodie", "Do they really like food"
+    ("books", "Do they like reading books")
+    ("melayu", "Can they speak Melayu"
+    ("sporty", "Do you think this person Join so many sport Activities")
+    ("energetic", "Are they always energetic")
+    ("ship", "Does this person has their own ship name with someone (in our class only) ")
+    ("pengawas", "Does this person hold the position of school prefect/Pengawas sekolah")
+    ("photography", "Does this person like to take photos")
+    ("coding", "Does this person love to Coding")
+    ("ml", "Does this person really know how to play Mobile legends")
+    ("kpop", "Does this person listen to K-pop")
+    ("technology", "Does this person interested in technology")
 ]
 
 
