@@ -17,7 +17,6 @@ classmates = [
     {"name": "Ahmad Rayyan", "boy": True, "glasses": False, "football": True, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": True, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": True, "kpop": False, "technology": False},
     {"name": "Manan", "boy": True, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": False, "sporty": True, "energetic": True, "ship": False, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": False, "technology": False},
     {"name": "Ashraf", "boy": True, "glasses": True, "football": False, "quiet": True, "like_math": False, "chess": True, "artist": False, "talktive": False, "foodie": False, "books": False, "melayu": False, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": False, "ml": False, "kpop": False, "technology": True},
-
     {"name": "Arissa S", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": True, "chess": True, "artist": False, "talktive": True, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": False},
     {"name": "Arissa Z", "boy": False, "glasses": False, "football": False, "quiet": True, "like_math": True, "chess": False, "artist": True, "talktive": False, "foodie": False, "books": True, "melayu": True, "sporty": False, "energetic": True, "ship": False, "pengawas": False, "photography": False, "coding": True, "ml": False, "kpop": True, "technology": True},
     {"name": "Adelia", "boy": False, "glasses": False, "football": False, "quiet": False, "like_math": False, "chess": False, "artist": False, "talktive": True, "foodie": False, "books": False, "melayu": True, "sporty": False, "energetic": True, "ship": True, "pengawas": False, "photography": True, "coding": False, "ml": False, "kpop": True, "technology": False},
@@ -70,13 +69,261 @@ questions = [
 
 
 # =========================
+# SHARED CSS
+# =========================
+
+def page_style():
+    return """
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+            color: #222;
+            padding: 25px 15px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .title {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* =====================
+           CARTOON CHARACTER
+           ===================== */
+
+        .character {
+            width: 190px;
+            height: 210px;
+            margin: 20px auto 30px;
+            position: relative;
+        }
+
+        .head {
+            width: 170px;
+            height: 160px;
+            background: #f5cfa0;
+            border: 5px solid #222;
+            border-radius: 50% 50% 45% 45%;
+            position: absolute;
+            left: 10px;
+            top: 15px;
+            overflow: hidden;
+        }
+
+        .hair {
+            position: absolute;
+            width: 175px;
+            height: 65px;
+            background: #222;
+            top: -10px;
+            left: -7px;
+            border-radius: 50% 50% 20% 20%;
+        }
+
+        .eye {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: white;
+            border: 4px solid #222;
+            border-radius: 50%;
+            top: 67px;
+        }
+
+        .eye::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #222;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .eye.left {
+            left: 38px;
+        }
+
+        .eye.right {
+            right: 38px;
+        }
+
+        .nose {
+            position: absolute;
+            top: 92px;
+            left: 75px;
+            font-size: 24px;
+        }
+
+        .mouth {
+            position: absolute;
+            top: 120px;
+            left: 58px;
+            width: 55px;
+            height: 20px;
+            border-bottom: 5px solid #222;
+            border-radius: 50%;
+        }
+
+        .body {
+            position: absolute;
+            width: 120px;
+            height: 75px;
+            background: #555;
+            left: 35px;
+            top: 150px;
+            border: 5px solid #222;
+            border-radius: 35px 35px 10px 10px;
+        }
+
+        .tie {
+            position: absolute;
+            width: 20px;
+            height: 45px;
+            background: #222;
+            left: 85px;
+            top: 160px;
+            clip-path: polygon(50% 0%, 100% 30%, 70% 100%, 50% 80%, 30% 100%, 0% 30%);
+        }
+
+        /* =====================
+           QUESTION BOX
+           ===================== */
+
+        .question-box {
+            background: white;
+            border: 4px solid #222;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 650px;
+            box-shadow: 0 6px 0 #222;
+        }
+
+        .question {
+            font-size: 29px;
+            font-weight: bold;
+        }
+
+        /* =====================
+           BUTTONS
+           ===================== */
+
+        button {
+            font-size: 25px;
+            font-weight: bold;
+            padding: 18px 45px;
+            margin: 10px;
+            border-radius: 15px;
+            border: 3px solid #222;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #222;
+            transition: transform 0.1s;
+        }
+
+        button:active {
+            transform: translateY(5px);
+            box-shadow: 0 0 0 #222;
+        }
+
+        .yes {
+            background: #d9ffd9;
+        }
+
+        .no {
+            background: #ffd9d9;
+        }
+
+        .restart {
+            background: #eeeeee;
+        }
+
+        .stats {
+            font-size: 18px;
+            margin-top: 25px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .result-name {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px 10px;
+            }
+
+            .title {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .character {
+                transform: scale(0.85);
+                margin: 5px auto 10px;
+            }
+
+            .question-box {
+                padding: 20px 12px;
+            }
+
+            .question {
+                font-size: 24px;
+            }
+
+            button {
+                width: 90%;
+                font-size: 26px;
+                padding: 20px;
+                margin: 10px auto;
+                display: block;
+            }
+
+            .result-name {
+                font-size: 38px;
+            }
+        }
+    </style>
+    """
+
+
+# =========================
 # WEBSITE
 # =========================
 
 @app.route("/", methods=["GET", "POST"])
 def home():
 
-    # Start with everyone
     remaining = classmates.copy()
 
     question_number = 0
@@ -84,23 +331,19 @@ def home():
 
     if request.method == "POST":
 
-        # Get previous information
         question_number = int(request.form["question_number"])
 
-        # Get all previous answers
         for key, value in request.form.items():
 
             if key.startswith("answer_"):
                 attribute = key.replace("answer_", "")
                 answers[attribute] = value == "yes"
 
-        # Get the answer to the current question
         current_attribute = request.form["current_attribute"]
         current_answer = request.form["answer"]
 
         answers[current_attribute] = current_answer == "yes"
 
-        # Filter classmates
         for attribute, answer in answers.items():
 
             remaining = [
@@ -118,58 +361,116 @@ def home():
 
         return f"""
         <html>
+
         <head>
             <title>Class Akinator</title>
+            {page_style()}
         </head>
 
         <body>
 
-        <h1>CLASS AKINATOR</h1>
+        <div class="container">
 
-        <h2>🎯 I KNOW WHO IT IS!</h2>
+        <div class="title">CLASS AKINATOR</div>
 
-        <h1>{remaining[0]["name"]}</h1>
+        <div class="character">
 
-        <p>Was I right?</p>
+            <div class="head">
+                <div class="hair"></div>
 
-        <button>YES!</button>
-        <button>NO</button>
+                <div class="eye left"></div>
+                <div class="eye right"></div>
 
-        <br><br>
+                <div class="nose">▼</div>
+                <div class="mouth"></div>
+            </div>
+
+            <div class="body"></div>
+            <div class="tie"></div>
+
+        </div>
+
+        <div class="question-box">
+
+            <h2>🎯 I KNOW WHO IT IS!</h2>
+
+            <div class="result-name">
+                {remaining[0]["name"]}
+            </div>
+
+            <p class="subtitle">
+                Was I right?
+            </p>
+
+        </div>
+
+        <button class="yes">YES!</button>
+        <button class="no">NO</button>
+
+        <br>
 
         <a href="/restart">
-            <button>🔄 START AGAIN</button>
+            <button class="restart">🔄 START AGAIN</button>
         </a>
+
+        </div>
 
         </body>
         </html>
         """
 
     # =========================
-    # NO ONE MATCHES
+    # NO MATCH
     # =========================
 
     if len(remaining) == 0:
 
-        return """
+        return f"""
         <html>
+
         <head>
             <title>Class Akinator</title>
+            {page_style()}
         </head>
 
         <body>
 
-        <h1>CLASS AKINATOR</h1>
+        <div class="container">
 
-        <h2>🤔 Hmm...</h2>
+        <div class="title">CLASS AKINATOR</div>
 
-        <p>I couldn't find anyone who matches those answers.</p>
+        <div class="character">
 
-        <br>
+            <div class="head">
+                <div class="hair"></div>
+
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+
+                <div class="nose">▼</div>
+                <div class="mouth"></div>
+            </div>
+
+            <div class="body"></div>
+            <div class="tie"></div>
+
+        </div>
+
+        <div class="question-box">
+
+            <h2>🤔 Hmm...</h2>
+
+            <p class="question">
+                I couldn't find anyone who matches those answers.
+            </p>
+
+        </div>
 
         <a href="/restart">
-            <button>🔄 START AGAIN</button>
+            <button class="restart">🔄 START AGAIN</button>
         </a>
+
+        </div>
 
         </body>
         </html>
@@ -188,27 +489,54 @@ def home():
 
         return f"""
         <html>
+
         <head>
             <title>Class Akinator</title>
+            {page_style()}
         </head>
 
         <body>
 
-        <h1>CLASS AKINATOR</h1>
+        <div class="container">
 
-        <h2>🤔 I'm not completely sure...</h2>
+        <div class="title">CLASS AKINATOR</div>
 
-        <p>It could be:</p>
+        <div class="character">
 
-        <ul>
-            {names}
-        </ul>
+            <div class="head">
+                <div class="hair"></div>
 
-        <br>
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+
+                <div class="nose">▼</div>
+                <div class="mouth"></div>
+            </div>
+
+            <div class="body"></div>
+            <div class="tie"></div>
+
+        </div>
+
+        <div class="question-box">
+
+            <h2>🤔 I'm not completely sure...</h2>
+
+            <p class="question">
+                It could be:
+            </p>
+
+            <ul style="font-size: 22px; text-align: left;">
+                {names}
+            </ul>
+
+        </div>
 
         <a href="/restart">
-            <button>🔄 START AGAIN</button>
+            <button class="restart">🔄 START AGAIN</button>
         </a>
+
+        </div>
 
         </body>
         </html>
@@ -220,7 +548,6 @@ def home():
 
     attribute, question = questions[question_number]
 
-    # Hidden fields preserve previous answers
     hidden_answers = ""
 
     for key, value in answers.items():
@@ -236,51 +563,100 @@ def home():
 
     <head>
         <title>Class Akinator</title>
+        {page_style()}
     </head>
 
     <body>
 
-    <h1>CLASS AKINATOR</h1>
+    <div class="container">
 
-    <p>Think of someone in your class!</p>
+        <div class="title">
+            CLASS AKINATOR
+        </div>
 
-    <h2>{question}</h2>
+        <div class="subtitle">
+            Think of someone in your class!
+        </div>
 
-    <form method="POST">
+        <!-- CARTOON CHARACTER -->
 
-        {hidden_answers}
+        <div class="character">
 
-        <input type="hidden"
-               name="question_number"
-               value="{question_number}">
+            <div class="head">
 
-        <input type="hidden"
-               name="current_attribute"
-               value="{attribute}">
+                <div class="hair"></div>
 
-        <button name="answer" value="yes">
-            YES
-        </button>
+                <div class="eye left"></div>
+                <div class="eye right"></div>
 
-        <button name="answer" value="no">
-            NO
-        </button>
+                <div class="nose">▼</div>
 
-    </form>
+                <div class="mouth"></div>
 
-    <p>
-        Possible people: {len(remaining)}
-    </p>
+            </div>
 
-    <p>
-        Question {question_number + 1} of {len(questions)}
-    </p>
+            <div class="body"></div>
+            <div class="tie"></div>
 
-    <br>
+        </div>
 
-    <a href="/restart">
-        <button>🔄 START AGAIN</button>
-    </a>
+        <!-- QUESTION -->
+
+        <div class="question-box">
+
+            <div class="question">
+                {question}
+            </div>
+
+        </div>
+
+        <!-- ANSWERS -->
+
+        <form method="POST">
+
+            {hidden_answers}
+
+            <input type="hidden"
+                   name="question_number"
+                   value="{question_number}">
+
+            <input type="hidden"
+                   name="current_attribute"
+                   value="{attribute}">
+
+            <button class="yes"
+                    name="answer"
+                    value="yes">
+                YES
+            </button>
+
+            <button class="no"
+                    name="answer"
+                    value="no">
+                NO
+            </button>
+
+        </form>
+
+        <div class="stats">
+
+            Possible people: {len(remaining)}
+
+            <br><br>
+
+            Question {question_number + 1} of {len(questions)}
+
+        </div>
+
+        <br>
+
+        <a href="/restart">
+            <button class="restart">
+                🔄 START AGAIN
+            </button>
+        </a>
+
+    </div>
 
     </body>
 
