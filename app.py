@@ -53,7 +53,7 @@ questions = [
     ("chess", "Does this person know how to play chess?")
     ("artist", "Are they good at drawing")
     ("talktive", "are they talktive")
-    ("foodie", "Do they really like food"
+    ("foodie", "Do they really like food")
     ("books", "Do they like reading books")
     ("melayu", "Can they speak Melayu")
     ("sporty", "Do you think this person Join so many sport Activities")
