@@ -78,26 +78,47 @@ body{
 font-family:Arial;
 text-align:center;
 background:linear-gradient(135deg,#eef2ff,#fff);
-padding:20px;color:#222
+padding:20px;
+color:#222
 }
 .box{
-max-width:650px;margin:auto;background:white;padding:25px;
-border-radius:25px;box-shadow:0 5px 20px #bbb
+max-width:650px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:25px;
+box-shadow:0 5px 20px #bbb
 }
 h1{font-size:40px}
 .q{font-size:28px;font-weight:bold;margin:30px 0}
 button{
-font-size:25px;font-weight:bold;padding:20px 50px;
-margin:10px;border:3px solid #222;border-radius:15px;
-background:white;box-shadow:0 5px #222
+font-size:25px;
+font-weight:bold;
+padding:20px 50px;
+margin:10px;
+border:3px solid #222;
+border-radius:15px;
+background:white;
+box-shadow:0 5px #222
 }
-button:active{transform:translateY(5px);box-shadow:none}
-.yes{background:#d8ffd8}.no{background:#ffd8d8}
+button:active{
+transform:translateY(5px);
+box-shadow:none
+}
+.yes{background:#d8ffd8}
+.no{background:#ffd8d8}
 .restart{background:#eee}
 .face{font-size:100px;margin:10px}
+
 @media(max-width:600px){
-h1{font-size:32px}.q{font-size:23px}
-button{display:block;width:90%;margin:15px auto;font-size:27px}
+h1{font-size:32px}
+.q{font-size:23px}
+button{
+display:block;
+width:90%;
+margin:15px auto;
+font-size:27px
+}
 }
 </style>
 """
@@ -109,7 +130,11 @@ def page(content):
     <meta name="viewport" content="width=device-width,initial-scale=1">
     {CSS}
     </head>
-    <body><div class="box">{content}</div></body>
+    <body>
+    <div class="box">
+    {content}
+    </div>
+    </body>
     </html>
     """
 
@@ -128,26 +153,30 @@ def home():
 
         qnum = int(request.form["qnum"])
 
+        # Load previous answers
         for k,v in request.form.items():
             if k.startswith("a_"):
                 answers[k[2:]] = v == "1"
 
+        # Save current answer
         attr = request.form["attr"]
         answers[attr] = request.form["answer"] == "1"
 
         qnum += 1
 
-        for attr,answer in answers.items():
+        # Filter classmates
+        for attr, answer in answers.items():
             remaining = [
-                p for p in remaining
-                if p.get(attr) == answer
+                person for person in remaining
+                if person.get(attr) == answer
             ]
 
     # =====================================================
-    # ZERO PEOPLE → STOP IMMEDIATELY
+    # 0 PEOPLE
     # =====================================================
 
-    if not remaining:
+    if len(remaining) == 0:
+
         return page("""
         <h1>🤔 I CAN'T GUESS!</h1>
 
@@ -163,56 +192,13 @@ def home():
         """)
 
     # =====================================================
-    # ASK NEXT QUESTION
-    # =====================================================
-
-    if qnum < len(questions):
-
-        attr,text = questions[qnum]
-
-        hidden = ""
-
-        for k,v in answers.items():
-            hidden += f'<input type="hidden" name="a_{k}" value="{int(v)}">'
-
-        return page(f"""
-        <h1>🧞 CLASS AKINATOR</h1>
-
-        <div class="face">🧑‍💻</div>
-
-        <div class="q">{text}</div>
-
-        <form method="POST">
-
-        {hidden}
-
-        <input type="hidden" name="qnum" value="{qnum}">
-        <input type="hidden" name="attr" value="{attr}">
-
-        <button class="yes" name="answer" value="1">YES</button>
-        <button class="no" name="answer" value="0">NO</button>
-
-        </form>
-
-        <p>
-        Question {qnum+1} / {len(questions)}
-        <br>
-        Possible people: {len(remaining)}
-        </p>
-
-        <a href="/restart">
-        <button class="restart">🔄 RESTART</button>
-        </a>
-        """)
-
-    # =====================================================
-    # ONE PERSON LEFT
+    # 1 PERSON → GUESS IMMEDIATELY
     # =====================================================
 
     if len(remaining) == 1:
 
         return page(f"""
-        <h1>🎯 I GOT IT!</h1>
+        <h1>🎯 I KNOW WHO IT IS!</h1>
 
         <div class="face">😎</div>
 
@@ -236,10 +222,75 @@ def home():
         """)
 
     # =====================================================
-    # STILL MULTIPLE PEOPLE AFTER ALL QUESTIONS
+    # MORE THAN 1 → NEXT QUESTION
     # =====================================================
 
-    names = "<br>".join(p["name"] for p in remaining)
+    if qnum < len(questions):
+
+        attr, text = questions[qnum]
+
+        hidden = ""
+
+        for k,v in answers.items():
+            hidden += f"""
+            <input type="hidden"
+                   name="a_{k}"
+                   value="{int(v)}">
+            """
+
+        return page(f"""
+        <h1>PERMATA AKINATOR</h1>
+
+        <div class="face">🧑‍💻</div>
+
+        <div class="q">{text}</div>
+
+        <form method="POST">
+
+        {hidden}
+
+        <input type="hidden"
+               name="qnum"
+               value="{qnum}">
+
+        <input type="hidden"
+               name="attr"
+               value="{attr}">
+
+        <button class="yes"
+                name="answer"
+                value="1">
+        YES
+        </button>
+
+        <button class="no"
+                name="answer"
+                value="0">
+        NO
+        </button>
+
+        </form>
+
+        <p>
+        Question {qnum + 1} / {len(questions)}
+        <br>
+        Possible people: {len(remaining)}
+        </p>
+
+        <a href="/restart">
+        <button class="restart">
+        🔄 RESTART
+        </button>
+        </a>
+        """)
+
+    # =====================================================
+    # STILL MULTIPLE AFTER ALL QUESTIONS
+    # =====================================================
+
+    names = "<br>".join(
+        person["name"] for person in remaining
+    )
 
     return page(f"""
     <h1>🤔 NOT SURE</h1>
@@ -248,10 +299,14 @@ def home():
 
     <h2>It could be:</h2>
 
-    <p style="font-size:22px">{names}</p>
+    <p style="font-size:22px">
+    {names}
+    </p>
 
     <a href="/restart">
-    <button class="restart">🔄 PLAY AGAIN</button>
+    <button class="restart">
+    🔄 PLAY AGAIN
+    </button>
     </a>
     """)
 
